@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio 50K em 45 Dias | Ademir Rodrigues - Estrategista</title>
+    <style>
+        /* Variáveis de Cores */
+        :root {
+            --cor-principal: #1a1a1a;
+            --cor-secundaria: #ffffff;
+            --cor-destaque: #d4af37; /* Dourado Elegante */
+            --cor-fundo: #0a0a0a;
+        }
+
+        /* Reset Básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--cor-fundo);
+            color: var(--cor-secundaria);
+            line-height: 1.6;
+            text-align: center; /* Garante que tudo esteja centralizado por padrão */
+        }
+
+        .container {
+            max-width: 900px; /* Levemente menor para mais foco */
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Animações (Micro-interações de Luxo) */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animated {
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        /* Assinatura */
+        .assinatura {
+            font-size: 1rem;
+            margin-top: 10px;
+            font-weight: 300;
+            color: #bbb;
+        }
+        .assinatura strong {
+            color: var(--cor-destaque);
+            font-weight: 600;
+        }
+
+        /* Seção de Destaque (Header) */
+        .hero {
+            padding: 90px 20px;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://via.placeholder.com/1500x800.png?text=Fundo+Elegante+Com+Grafico+de+Crescimento') center center/cover;
+        }
+
+        .tagline {
+            color: var(--cor-destaque);
+            font-size: 1.1rem; /* Reduzido */
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .hero h1 {
+            font-size: 3rem; /* Reduzido */
+            margin-bottom: 20px;
+            font-weight: 900;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.4rem; /* Reduzido */
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--cor-destaque);
+            color: var(--cor-principal);
+            padding: 18px 50px;
+            text-decoration: none;
+            font-size: 1.5rem; /* Levemente reduzido */
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.2s;
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6);
+            animation: pulse 1.5s infinite; 
+        }
+
+        .cta-button:hover {
+            background-color: #e0c160;
+            transform: scale(1.05);
+            animation: none;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+        }
+
+        /* Cronômetro */
+        .cronometro-container {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #2c2c2c;
+            border-radius: 8px;
+            border: 2px solid var(--cor-destaque);
+            display: inline-block;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+        
+        .cronometro-container p {
+            font-size: 1rem;
+            margin-bottom: 8px;
+            color: #ddd;
+        }
+
+        #cronometro {
+            font-size: 2.2rem; /* Reduzido */
+            font-weight: bold;
+            color: var(--cor-destaque);
+            letter-spacing: 2px;
+        }
+
+        /* Seções de Conteúdo */
+        .section {
+            padding: 50px 20px; /* Reduzido */
+        }
+
+        .section h2 {
+            font-size: 2rem; /* Reduzido */
+            margin-bottom: 30px;
+            color: var(--cor-destaque);
+            font-weight: 700;
+        }
+
+        .section p {
+            max-width: 750px;
+            margin: 0 auto 25px;
+            font-size: 1.1rem;
+        }
+
+        /* Seção Garantia */
+        .garantia {
+            background-color: var(--cor-principal);
+            padding: 60px 20px;
+            border-top: 5px solid var(--cor-destaque);
+        }
+
+        .garantia-box {
+            background-color: #2c2c2c;
+            padding: 30px;
+            border-radius: 8px;
+            max-width: 600px;
+            margin: 30px auto;
+            border: 1px solid var(--cor-destaque);
+        }
+
+        .garantia-box p {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            font-weight: 300;
+        }
+
+        .garantia-box strong {
+            color: var(--cor-destaque);
+            font-weight: 700;
+        }
+
+        /* Seção do Método */
+        .metodo-grid {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .passo {
+            width: 48%;
+            margin-bottom: 30px;
+            text-align: center; /* Centralizado */
+            padding: 20px;
+            border-bottom: 3px solid var(--cor-destaque); /* Mudança visual */
+            transition: background-color 0.3s;
+        }
+        
+        .passo:hover {
+            background-color: #151515;
+        }
+
+        .passo h3 {
+            font-size: 1.3rem; /* Reduzido */
+            margin-bottom: 8px;
+            color: var(--cor-destaque);
+        }
+
+        .passo p {
+            font-size: 1rem;
+            margin: 0;
+            max-width: 100%;
+        }
+
+        /* Footer */
+        footer {
+            padding: 25px 20px;
+            background-color: var(--cor-principal);
+            font-size: 0.8rem;
+            color: #aaa;
+        }
+
+        /* Media Queries para Responsividade */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .cta-button {
+                font-size: 1.2rem;
+                padding: 12px 25px;
+            }
+
+            .metodo-grid {
+                flex-direction: column;
+            }
+
+            .passo {
+                width: 100%;
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero animated">
+        <div class="container">
+            <p class="tagline">PARA EMPREENDEDORES COM POUCO TEMPO E GRANDE AMBIÇÃO</p>
+            <h1>Pare de Postar. Comece a Faturar.</h1>
+            <p>O Desafio 50K em 45 Dias é a ÚNICA Estratégia de Social Media com **Garantia de Faturamento** ou Seu Dinheiro de Volta. Seu risco é zero.</p>
+            
+            <a href="https://wa.me/5583996999840" class="cta-button" target="_blank">GARANTIR MINHA ANÁLISE E VAGA</a>
+            
+            <div class="cronometro-container">
+                <p>⚠️ PROMOÇÃO DE LANÇAMENTO EXPIRA EM:</p>
+                <div id="cronometro"></div>
+            </div>
+            
+            <p class="assinatura">Por **Ademir Rodrigues**, Social Media Estrategista.</p>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container animated">
+            <h2>Sua Maior Frustração Acaba Aqui.</h2>
+            <p>Você sabe que seu produto é incrível, mas o Instagram não acompanha. Você **perde horas** tentando criar conteúdo, e no final, o que ganha é **zero escala** e **faturamento estagnado**.</p>
+            <p>Nós não vamos te ensinar a fazer dancinhas. Vamos aplicar um método de **VENDAS RÁPIDAS** que transforma seu conhecimento em lucro. Nosso foco é: <strong>o que entra no seu caixa</strong>.</p>
+            <p style="font-weight: 500; font-size: 1.2rem;">É por isso que ousamos dar uma garantia financeira.</p>
+        </div>
+    </section>
+
+    <section class="section garantia">
+        <div class="container animated">
+            <h2>O Poder da Garantia: Risco Zero para Você.</h2>
+            <div class="garantia-box">
+                <p>Nossa Confiança é Total. Nossa Promessa é Simples:</p>
+                <p>Se, em **45 dias**, a sua empresa não atingir **R$ 50.000,00** em faturamento comprovado seguindo nossa estratégia, nós **devolvemos 100% do seu investimento** em nossa gestão.</p>
+                <p><strong>SIMPLES. AUDACIOSO. JUSTO.</strong></p>
+            </div>
+            <p style="font-size: 1rem; color: #ccc;">*Esta é uma parceria de alto nível. Requer: Negócio validado, investimento mínimo em Tráfego Pago (R$ 3.000 a R$ 5.000) e comprometimento total com a implementação.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container animated">
+            <h2>O Método Acelerado que Entrega o Faturamento.</h2>
+            <div class="metodo-grid">
+                <div class="passo">
+                    <h3>1. Análise Financeira (Não de Feed)</h3>
+                    <p>Mergulhamos no seu funil para identificar gargalos e onde o potencial de R$ 50K está escondido.</p>
+                </div>
+                <div class="passo">
+                    <h3>2. Conteúdo de Venda Direta</h3>
+                    <p>Posts e Reels que não geram apenas curtidas, mas sim chamadas, DMs e, o mais importante, pedidos de orçamento.</p>
+                </div>
+                <div class="passo">
+                    <h3>3. Tráfego Otimizado para Compradores</h3>
+                    <p>Não mostramos seu anúncio para curiosos. Apenas para quem está pronto para pagar pelo seu serviço ou produto.</p>
+                </div>
+                <div class="passo">
+                    <h3>4. Ação e Ajuste Imediato</h3>
+                    <p>Relatórios semanais com uma pergunta: "O que podemos fazer HOJE para vender mais?" Sem enrolação.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="padding-top: 20px;">
+        <div class="container animated">
+            <h2>Não Perca a Sua Vaga. Apenas 2 Clientes por Mês.</h2>
+            <p style="font-size: 1.3rem; font-weight: 500;">Esta é uma parceria estratégica e exclusiva. A urgência do cronômetro é real, e só trabalhamos com 2 clientes por mês para garantir o nosso foco no seu sucesso.</p>
+            <a href="https://wa.me/5583996999840" class="cta-button" target="_blank">QUERO GARANTIR MINHA VAGA E INICIAR O DESAFIO</a>
+            <p style="margin-top: 15px; font-size: 1rem; color: #aaa;">Se você não nos contatar agora, a vaga será do seu concorrente.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Ademir Rodrigues - Social Media Estrategista. Seu Faturamento é a Nossa Meta.</p>
+    </footer>
+
+    <script>
+        function iniciarCronometro() {
+            // Define o fim do cronômetro para daqui a 48 horas (2 dias)
+            const dataFim = new Date();
+            dataFim.setDate(dataFim.getDate() + 2); // Adiciona 2 dias
+
+            const cronometroElemento = document.getElementById('cronometro');
+
+            function atualizarCronometro() {
+                const agora = new Date().getTime();
+                const diferenca = dataFim - agora;
+
+                if (diferenca < 0) {
+                    clearInterval(intervalo);
+                    cronometroElemento.innerHTML = "PROMOÇÃO ENCERRADA";
+                    // Desabilitar o botão de CTA
+                    document.querySelector('.cta-button').style.backgroundColor = '#555';
+                    document.querySelector('.cta-button').style.boxShadow = 'none';
+                    document.querySelector('.cta-button').innerText = "VAGAS ENCERRADAS";
+                    document.querySelector('.cta-button').href = "#"; 
+                    return;
+                }
+
+                const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+                const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
+                const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
+
+                cronometroElemento.innerHTML = 
+                    (dias > 0 ? dias + "D " : "") + 
+                    horas.toString().padStart(2, '0') + "H : " + 
+                    minutos.toString().padStart(2, '0') + "M : " + 
+                    segundos.toString().padStart(2, '0') + "S";
+            }
+
+            const intervalo = setInterval(atualizarCronometro, 1000);
+            atualizarCronometro(); 
+        }
+
+        iniciarCronometro();
+    </script>
+
+</body>
+</html>
